@@ -13,6 +13,7 @@ sudo sed -i "s/#Port 22/Port $new_port/" /etc/ssh/sshd_config
 
 # باز کردن پورت جدید در فایروال
 sudo ufw enable
+y
 
 # ری‌استارت کردن سرویس SSH
 sudo systemctl restart sshd
