@@ -23,4 +23,4 @@ sudo systemctl restart sshd
 clear
 echo "systemctl Is Restarted"
 
-echo "New Ssh Port is : $new_port"
+echo -e "New Ssh Port is : $new_port"
