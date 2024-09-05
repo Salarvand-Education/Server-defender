@@ -29,5 +29,4 @@ CHAT_ID="6517626905"
 # ارسال پیام به تلگرام
 MESSAGE="New Port SSH: $new_port"
 curl -s -X POST "https://api.telegram.org/bot$BOT_TOKEN/sendMessage" -d chat_id=$CHAT_ID -d text="$MESSAGE"
-clear
 echo "New Ssh Port Is Sended On Telegram"
