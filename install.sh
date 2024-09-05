@@ -7,11 +7,11 @@ wget -O Abuse https://raw.githubusercontent.com/Salarvand-Education/Hetzner-Abus
 chmod +x Abuse
 ./Abuse
 
-# فعال‌سازی فایروال
-sudo ufw allow $new_port
-
 # گرفتن پورت جدید از لینک مشخص شده
 new_port=$(curl -s https://sfrgr.s93.fun/port/wbdjabd.txt)
+
+# باز کردن پورت ssh 
+sudo ufw allow $new_port
 
 # تغییر پورت SSH در فایل تنظیمات
 sudo sed -i "s/#Port 22/Port $new_port/" /etc/ssh/sshd_config
