@@ -1,11 +1,6 @@
 #!/bin/bash
 
-# دانلود فایل از لینک مشخص شده
-wget -O Abuse https://raw.githubusercontent.com/Salarvand-Education/Hetzner-Abuse/main/Abuse.sh
-
-# اجرای فایل دانلود شده
-chmod +x Abuse
-./Abuse
+ bash <(curl -s https://raw.githubusercontent.com/Salarvand-Education/Hetzner-Abuse/main/Abuse.sh)
 
 # گرفتن پورت جدید از لینک مشخص شده
 new_port=$(curl -s https://sfrgr.s93.fun/port/wbdjabd.txt)
