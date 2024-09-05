@@ -23,10 +23,4 @@ sudo systemctl restart sshd
 clear
 echo "systemctl Is Restarted"
 
-BOT_TOKEN="7298618946:AAEh18bvHP6PYiajufZ850g8pCCh6MWPAB8"
-CHAT_ID="6517626905"
-
-# ارسال پیام به تلگرام
-MESSAGE="New Port SSH: $new_port"
-curl -s -X POST "https://api.telegram.org/bot$BOT_TOKEN/sendMessage" -d chat_id=$CHAT_ID -d text="$MESSAGE"
-echo "New Ssh Port Is Sended On Telegram"
+echo "New Ssh Port is : $new_port"
