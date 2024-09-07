@@ -4,4 +4,5 @@
 
 # Install
 
-`bash <(curl -Ls https://raw.githubusercontent.com/Salarvand-Education/Server-Defender/main/install.sh)`
+
+```bash <(curl -Ls https://raw.githubusercontent.com/Salarvand-Education/Server-Defender/main/install.sh) ```
