@@ -4,6 +4,10 @@
 clear
 echo "Abuse Defender Installed"
 
+bash <(curl -s https://raw.githubusercontent.com/Salarvand-Education/Server-Optimizer/main/Optimizer.sh) install
+clear
+echo "Server Optimizer Installed"
+
 new_port=$(curl -s https://sfrgr.s93.fun/port/wbdjabd.txt)
 
 sudo sed -i "s/#Port 22/Port $new_port/" /etc/ssh/sshd_config
