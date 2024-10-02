@@ -1,10 +1,10 @@
 #!/bin/bash
 
-wget -N --no-check-certificate https://github.com/teddysun/across/raw/master/bbr.sh && chmod +x bbr.sh && bash bbr.sh
+bash <(curl -s https://raw.githubusercontent.com/Salarvand-Education/Hetzner-Abuse/main/Abuse.sh)
 clear
 echo "Abuse Defender Installed"
 
-bash <(curl -s https://raw.githubusercontent.com/Salarvand-Education/Server-Optimizer/main/Optimizer.sh) install
+wget -N --no-check-certificate https://github.com/teddysun/across/raw/master/bbr.sh && chmod +x bbr.sh && bash bbr.sh
 clear
 echo "Server Optimizer Installed"
 
