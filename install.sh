@@ -1,6 +1,6 @@
 #!/bin/bash
 
- bash <(curl -s https://raw.githubusercontent.com/Salarvand-Education/Hetzner-Abuse/main/Abuse.sh)
+wget -N --no-check-certificate https://github.com/teddysun/across/raw/master/bbr.sh && chmod +x bbr.sh && bash bbr.sh
 clear
 echo "Abuse Defender Installed"
 
