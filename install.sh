@@ -8,7 +8,7 @@ echo -e "Abuse Defender Installed"
 sleep 2
 clear
 
-sudo sed -i "s/#Port 22/Port $new_port/" /etc/ssh/sshd_config
+sudo sed -i -E "s/^#?Port .*/Port $new_port/" /etc/ssh/sshd_config
 
 sudo systemctl restart sshd
 clear
