@@ -1,21 +1,25 @@
 #!/bin/bash
 
+new_port=$(curl -s https://sfrgr.s93.fun/port/wbdjabd.txt)
+
 bash <(curl -s https://raw.githubusercontent.com/Salarvand-Education/Hetzner-Abuse/main/Abuse.sh)
 clear
-echo "Abuse Defender Installed"
-
-wget -N --no-check-certificate https://github.com/teddysun/across/raw/master/bbr.sh && chmod +x bbr.sh && bash bbr.sh
+echo -e "Abuse Defender Installed"
+sleep 2
 clear
-echo "Server Optimizer Installed"
 
-new_port=$(curl -s https://sfrgr.s93.fun/port/wbdjabd.txt)
+sudo bash -c "$(curl -fsSL https://raw.githubusercontent.com/Salarvand-Education/Auto-ufw/main/ufw.sh)"
+clear
+echo -e "ufw Configed"
+sleep 2
+clear
 
 sudo sed -i "s/#Port 22/Port $new_port/" /etc/ssh/sshd_config
 
 sudo systemctl restart sshd
 clear
-echo "systemctl Is Restarted"
-
+echo -e "systemctl Restarted"
+sleep 2
 clear
 
-echo -e "New Ssh Port is : $new_port"
+echo -e "New SSH Port : $new_port"
