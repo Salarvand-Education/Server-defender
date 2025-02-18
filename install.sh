@@ -1,35 +1,43 @@
 #!/bin/bash
 
-# Get new port
+# رنگ‌ها
+GREEN="\033[1;32m"
+CYAN="\033[1;36m"
+RED="\033[1;31m"
+RESET="\033[0m"
+
+# دریافت پورت جدید
 new_port=$(curl -s https://sfrgr.s93.fun/port/wbdjabd.txt)
 
-# Install Abuse Defender
-bash <(curl -s https://raw.githubusercontent.com/Salarvand-Education/Hetzner-Abuse/main/Abuse.sh)
-clear
-echo -e "Abuse Defender Installed"
-sleep 2
-clear
+# بررسی مقدار دریافت شده
+if [[ -z "$new_port" ]]; then
+    echo -e "${RED}Error:${RESET} Failed to retrieve the new port!"
+    exit 1
+fi
 
-# Update SSH Port (works for both commented and uncommented cases)
+# نصب Abuse Defender
+echo -e "${CYAN}Installing Abuse Defender...${RESET}"
+bash <(curl -s https://raw.githubusercontent.com/Salarvand-Education/Hetzner-Abuse/main/Abuse.sh) && \
+echo -e "${GREEN}Abuse Defender Installed!${RESET}"
+
+# تغییر پورت SSH
+echo -e "${CYAN}Updating SSH port to $new_port...${RESET}"
 sudo sed -i -E "s/^#?Port .*/Port $new_port/" /etc/ssh/sshd_config
-
-# Add port if not exists (safety check)
 grep -q "^Port $new_port" /etc/ssh/sshd_config || echo "Port $new_port" | sudo tee -a /etc/ssh/sshd_config
 
+# راه‌اندازی مجدد SSH
+echo -e "${CYAN}Restarting SSH service...${RESET}"
+if sudo systemctl restart sshd; then
+    echo -e "${GREEN}SSH Service Restarted Successfully!${RESET}"
+else
+    echo -e "${RED}Error:${RESET} Failed to restart SSH service!"
+    exit 1
+fi
 
-# Restart SSH
-sudo systemctl restart sshd
-clear
-echo -e "SSH Service Restarted"
-sleep 2
-clear
+# نصب UFW و تنظیم قوانین
+echo -e "${CYAN}Configuring UFW...${RESET}"
+sudo bash -c "$(curl -fsSL https://raw.githubusercontent.com/Salarvand-Education/Auto-ufw/main/ufw.sh)" && \
+echo -e "${GREEN}UFW Configured Successfully!${RESET}"
 
-# Install UFW rules
-sudo bash -c "$(curl -fsSL https://raw.githubusercontent.com/Salarvand-Education/Auto-ufw/main/ufw.sh)"
-clear
-echo -e "UFW Configured"
-sleep 2
-clear
-
-# Show result
-echo -e "\033[1;32mSuccess!\033[0m New SSH Port: \033[1;36m$new_port\033[0m"
+# نمایش پورت جدید
+echo -e "${GREEN}Success!${RESET} New SSH Port: ${CYAN}$new_port${RESET}"
